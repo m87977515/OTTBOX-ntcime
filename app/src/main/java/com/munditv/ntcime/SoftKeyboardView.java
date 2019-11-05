@@ -234,7 +234,7 @@ public class SoftKeyboardView extends KeyboardView {
     }
     Log.d("SoftwareKeyboardView ", "getCharactersByKeycode keycode = " + keycode + " str=" + str);
     for(Keyboard.Key key: keys) {
-      if(key.label.toString().equals(str)) {
+      if(key.label != null  && key.label.toString().equals(str)) {
         int[] codes = key.codes;
         for(int i=0; i < codes.length; i++) {
           if(mykey == codes[i]) {

@@ -25,11 +25,11 @@
     >
 
     <Row>
-        <Key android:codes="-200" android:keyLabel="@string/label_english_number"/>
+        <Key android:codes="-200" android:keyLabel="@string/label_english_number" android:keyEdgeFlags="left" />
         <Key android:codes="10" android:keyIcon="@drawable/enter_icon"
             android:iconPreview="@drawable/enter_popup_icon"
             android:isRepeatable="true"/>
-        <Key android:codes="4" android:keyLabel="back" android:keyEdgeFlags="right"/>
+        <Key android:codes="4" android:keyLabel="@string/label_back" android:keyEdgeFlags="right"/>
     </Row>
 
     <Row>

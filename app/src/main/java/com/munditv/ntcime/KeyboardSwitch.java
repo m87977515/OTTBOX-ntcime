@@ -93,15 +93,7 @@ public class KeyboardSwitch {
     } else {
       // Preserve the selected keyboard and its shift-status.
       boolean isShifted = currentKeyboard.isShifted();
-      if (currentKeyboard.isEnglish()) {
-        toEnglish();
-      } else if (currentKeyboard.isChinese()) {
-        toChinese();
-      } else if (currentKeyboard.isNumberSymbol()) {
-        toNumberSymbol();
-      } else if (currentKeyboard.isShiftSymbol()) {
-        toShiftSymbol();
-      } else if (currentKeyboard.isNumberEnglish()) {
+      if (currentKeyboard.isNumberEnglish()) {
         toNumberEnglish();
       } else if (currentKeyboard.isNumberZhuyin()) {
         toNumberZhuyin();
@@ -140,7 +132,7 @@ public class KeyboardSwitch {
             || (variation == InputType.TYPE_TEXT_VARIATION_URI)
             || (variation == InputType.TYPE_TEXT_VARIATION_PASSWORD)
             || (variation == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)) {
-          toEnglish();
+          toNumberEnglish();
         } else {
           // Switch to non-symbol keyboard, either Chinese or English keyboard,
           // for other general text editing.
@@ -163,9 +155,7 @@ public class KeyboardSwitch {
   public boolean onKey(int keyCode) {
     switch (keyCode) {
       case SoftKeyboard.KEYCODE_MODE_CHANGE_LETTER:
-        if (currentKeyboard.isEnglish()) {
-          toChinese();
-        } else if(currentKeyboard.isNumberEnglish()) {
+        if(currentKeyboard.isNumberEnglish()) {
           toNumberZhuyin();
         } else if(currentKeyboard.isNumberZhuyin()) {
           toNumberEnglish();
@@ -213,14 +203,6 @@ public class KeyboardSwitch {
     currentKeyboard = shiftSymbolKeyboard;
   }
 
-  private void toEnglish() {
-    currentKeyboard = englishKeyboard;
-  }
-
-  private void toChinese() {
-    currentKeyboard = chineseKeyboard;
-  }
-
   private void toNumberEnglish() { currentKeyboard = numberEnglishKeyboard; }
 
   private void toNumberZhuyin() { currentKeyboard = numberZhuyinKeyboard; }
@@ -232,9 +214,9 @@ public class KeyboardSwitch {
   private void toNonSymbols() {
     if (currentKeyboard.isSymbols()) {
       if (wasEnglishToSymbol) {
-        toEnglish();
+        toNumberEnglish();
       } else {
-        toChinese();
+        toNumberZhuyin();
       }
     }
   }

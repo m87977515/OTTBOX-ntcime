@@ -323,7 +323,13 @@ public abstract class AbstractIME extends InputMethodService implements
     }
     str +="}";
     Log.d("AbstractIME ", "onKey(primaryCode,keyCodes) primaryCode = " + primaryCode + " keyCodes = " + str);
-
+    if (inputView.isNumberEnglish()) {
+      if (primaryCode == 172) {
+        isCapslock = !isCapslock;
+        inputView.setCapsLock(isCapslock);
+        return;
+      }
+    }
     handleKeyCode(primaryCode);
   }
 

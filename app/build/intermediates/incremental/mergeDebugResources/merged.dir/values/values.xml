@@ -48,6 +48,7 @@
     <string name="alternative_zhuyin_9">ㄢㄣㄤㄥㄦ</string>
     <string name="alternative_zhuyin_star">ˊˇˋ˙</string>
     <string name="ime_name">老人機輸入法</string>
+    <string name="label_back">返回</string>
     <string name="label_chinese">中文</string>
     <string name="label_english">英文</string>
     <string name="label_english_number">英數</string>

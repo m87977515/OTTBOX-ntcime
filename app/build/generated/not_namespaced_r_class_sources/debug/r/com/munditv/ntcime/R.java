@@ -107,17 +107,18 @@ public final class R {
     public static final int alternative_zhuyin_9=0x7f080011;
     public static final int alternative_zhuyin_star=0x7f080012;
     public static final int ime_name=0x7f080013;
-    public static final int label_chinese=0x7f080014;
-    public static final int label_english=0x7f080015;
-    public static final int label_english_number=0x7f080016;
-    public static final int label_help=0x7f080017;
-    public static final int label_pingyin=0x7f080018;
-    public static final int label_zhuyin=0x7f080019;
-    public static final int prefs_licensing=0x7f08001a;
-    public static final int prefs_sound_key=0x7f08001b;
-    public static final int prefs_sound_title=0x7f08001c;
-    public static final int prefs_vibrate_key=0x7f08001d;
-    public static final int zhuyin_ime_name=0x7f08001e;
+    public static final int label_back=0x7f080014;
+    public static final int label_chinese=0x7f080015;
+    public static final int label_english=0x7f080016;
+    public static final int label_english_number=0x7f080017;
+    public static final int label_help=0x7f080018;
+    public static final int label_pingyin=0x7f080019;
+    public static final int label_zhuyin=0x7f08001a;
+    public static final int prefs_licensing=0x7f08001b;
+    public static final int prefs_sound_key=0x7f08001c;
+    public static final int prefs_sound_title=0x7f08001d;
+    public static final int prefs_vibrate_key=0x7f08001e;
+    public static final int zhuyin_ime_name=0x7f08001f;
   }
   public static final class style {
     public static final int KeyboardKeyOverlay=0x7f090000;

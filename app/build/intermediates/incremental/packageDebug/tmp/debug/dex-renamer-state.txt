@@ -1,4 +1,4 @@
-#Tue Nov 05 18:38:16 CST 2019
+#Tue Nov 05 19:31:19 CST 2019
 base.0=/home/chevylin/Workspace/ntcime/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
