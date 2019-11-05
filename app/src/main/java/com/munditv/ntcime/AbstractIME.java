@@ -23,6 +23,7 @@ import android.database.CursorJoiner;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -46,6 +47,8 @@ public abstract class AbstractIME extends InputMethodService implements
   private int hardwarekey;
   private int prevKeyCode;
   private boolean isCapslock;
+
+  private Handler mHandler = new Handler();
 
   protected abstract KeyboardSwitch createKeyboardSwitch(Context context);
   protected abstract Editor createEditor();
@@ -196,14 +199,18 @@ public abstract class AbstractIME extends InputMethodService implements
       }
     }
 
-    if(keyCode == 82) {
+    if (keyCode == 75 || keyCode ==165) {
+      return super.onKeyDown(keyCode, event);
+    }
+
+    if (keyCode == 82) {
       hardwarekey = -200;
       handleKeyCode(hardwarekey);
       return true;
     }
 
-    if(keyCode == 172 || keyCode == 68) {
-      if(inputView.isNumberEnglish()) {
+    if (keyCode == 172 || keyCode == 68) {
+      if (inputView.isNumberEnglish()) {
         isCapslock = !isCapslock;
         inputView.setCapsLock(isCapslock);
         return true;
@@ -272,15 +279,19 @@ public abstract class AbstractIME extends InputMethodService implements
     if(inputView != null) {
       hardwarekey = inputView.getCharactersByKeycode(keyCode);
       if(inputView.isNumberEnglish()) {
-/*
-        if(prevKeyCode == keyCode) {
-          handleKeyCode(-5);
-        }
-*/
-        if(isCapslock) {
+        if (isCapslock) {
           hardwarekey = Character.toUpperCase(hardwarekey);
         }
+        if(mHandler != null) mHandler.removeCallbacks(delayCheck);
+        if (keyCode >= KeyEvent.KEYCODE_2 && keyCode <= KeyEvent.KEYCODE_9) {
+          if(prevKeyCode == keyCode) {
+            sendDownUpKeyEvents(KeyEvent.KEYCODE_DEL);
+          }
+        }
+        mHandler.postDelayed(delayCheck, 2000);
         prevKeyCode = keyCode;
+        mHandler.postDelayed(postCharacter,300);
+        return true;
       }
       handleKeyCode(hardwarekey);
       //if (hardwarekey > 255)
@@ -289,6 +300,20 @@ public abstract class AbstractIME extends InputMethodService implements
 
     return super.onKeyDown(keyCode, event);
   }
+
+  final Runnable postCharacter = new Runnable() {
+    public void run() {
+      handleKeyCode(hardwarekey);
+      mHandler.removeCallbacks(postCharacter);
+    }
+  };
+
+  final Runnable delayCheck = new Runnable() {
+    public void run() {
+      prevKeyCode = -2;
+      mHandler.removeCallbacks(delayCheck);
+    }
+  };
 
   public void onKey(int primaryCode, int[] keyCodes) {
     String str="{";
@@ -393,15 +418,19 @@ public abstract class AbstractIME extends InputMethodService implements
   }
 
   private boolean handleDelete(int keyCode) {
-    // Handle delete-key only when no composing text. 
+    // Handle delete-key only when no composing text.
+    Log.d("AbstractIME ", "handleDelete() ");
     if ((keyCode == Keyboard.KEYCODE_DELETE) && !editor.hasComposingText()) {
       if (inputView.hasEscape()) {
+        Log.d("AbstractIME ", "handleDelete() escape()");
         escape();
       } else {
+        Log.d("AbstractIME ", "handleDelete() sendDownUpKeyEvents()");
         sendDownUpKeyEvents(KeyEvent.KEYCODE_DEL);
       }
       return true;
     }
+    Log.d("AbstractIME ", "handleDelete() no Process");
     return false;
   }
 
