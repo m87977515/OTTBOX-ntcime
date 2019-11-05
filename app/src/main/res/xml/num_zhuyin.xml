@@ -25,6 +25,14 @@
     >
 
     <Row>
+        <Key android:codes="-200" android:keyLabel="@string/label_english_number"/>
+        <Key android:codes="10" android:keyIcon="@drawable/enter_icon"
+            android:iconPreview="@drawable/enter_popup_icon"
+            android:isRepeatable="true"/>
+        <Key android:codes="4" android:keyLabel="back" android:keyEdgeFlags="right"/>
+    </Row>
+
+    <Row>
         <Key android:codes="12549,12550,12551,12552" android:keyLabel="1" android:popupCharacters="@string/alternative_zhuyin_1" android:keyEdgeFlags="left" />
         <Key android:codes="12553,12554,12555,12556" android:keyLabel="2" android:popupCharacters="@string/alternative_zhuyin_2" />
         <Key android:codes="12557,12558,12559" android:keyLabel="3" android:popupCharacters="@string/alternative_zhuyin_3" android:keyEdgeFlags="right" />
@@ -48,14 +56,6 @@
         <Key android:codes="-5" android:keyIcon="@drawable/delete_icon"
             android:iconPreview="@drawable/delete_popup_icon"
             android:isRepeatable="true" android:keyEdgeFlags="right"/>
-    </Row>
-
-    <Row  android:rowEdgeFlags="bottom" android:keyHeight="@dimen/key_height_bottom_row" >
-        <Key android:codes="-200" android:keyLabel="@string/label_english_number"/>
-        <Key android:codes="10" android:keyIcon="@drawable/enter_icon"
-            android:iconPreview="@drawable/enter_popup_icon"
-            android:isRepeatable="true"/>
-        <Key android:codes="4" android:keyLabel="back" android:keyEdgeFlags="right"/>
     </Row>
 
 </Keyboard>
