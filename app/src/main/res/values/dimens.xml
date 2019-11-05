@@ -18,7 +18,7 @@
 -->
 
 <resources>
-    <dimen name="key_height">56dip</dimen>
+    <dimen name="key_height">70dip</dimen>
     <dimen name="key_height_bottom_row">53dip</dimen>
     <dimen name="key_height_popup">50dip</dimen>
     <dimen name="key_height_zhuyin">42dip</dimen>
