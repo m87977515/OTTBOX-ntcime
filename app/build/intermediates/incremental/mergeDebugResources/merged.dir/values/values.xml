@@ -51,6 +51,7 @@
     <string name="label_chinese">中文</string>
     <string name="label_english">英文</string>
     <string name="label_english_number">英數</string>
+    <string name="label_help">幫助</string>
     <string name="label_pingyin">拼音</string>
     <string name="label_zhuyin">注音</string>
     <string name="prefs_licensing">授權資訊</string>

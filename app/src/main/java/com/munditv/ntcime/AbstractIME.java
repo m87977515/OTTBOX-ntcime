@@ -283,7 +283,8 @@ public abstract class AbstractIME extends InputMethodService implements
           hardwarekey = Character.toUpperCase(hardwarekey);
         }
         if(mHandler != null) mHandler.removeCallbacks(delayCheck);
-        if (keyCode >= KeyEvent.KEYCODE_2 && keyCode <= KeyEvent.KEYCODE_9) {
+        if ((keyCode >= KeyEvent.KEYCODE_2 && keyCode <= KeyEvent.KEYCODE_9)
+            || keyCode == KeyEvent.KEYCODE_0) {
           if(prevKeyCode == keyCode) {
             sendDownUpKeyEvents(KeyEvent.KEYCODE_DEL);
           }

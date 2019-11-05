@@ -43,7 +43,7 @@
     </Row>
 
     <Row>
-        <Key android:codes="714,711,715,729" android:keyLabel="Help" android:popupCharacters="@string/alternative_zhuyin_star" android:keyEdgeFlags="left"/>
+        <Key android:codes="714,711,715,729" android:keyLabel="@string/label_help" android:popupCharacters="@string/alternative_zhuyin_star" android:keyEdgeFlags="left"/>
         <Key android:codes="12583,12584,12585" android:keyLabel="0" android:popupCharacters="@string/alternative_zhuyin_0" />
         <Key android:codes="-5" android:keyIcon="@drawable/delete_icon"
             android:iconPreview="@drawable/delete_popup_icon"

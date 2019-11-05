@@ -187,9 +187,6 @@ public class SoftKeyboardView extends KeyboardView {
 
     Log.d("SoftwareKeyboardView ", "getCharactersByKeycode keycode = " + keycode);
     switch(keycode) {
-      case KeyEvent.KEYCODE_0 :
-        str="0";
-        break;
       case KeyEvent.KEYCODE_1 :
         str="1";
         break;
@@ -217,8 +214,19 @@ public class SoftKeyboardView extends KeyboardView {
       case KeyEvent.KEYCODE_9 :
         str="9";
         break;
+      case KeyEvent.KEYCODE_0 :
+        if(isNumberEnglish()) {
+          if (mykey == '0') {
+            mykey = ' ';
+          } else {
+            mykey = '0';
+          }
+          return mykey;
+        }
+        str="0";
+        break;
       case 256 :
-        str="*";
+        str="幫助";
         break;
       default:
         mykeycode=-1;
