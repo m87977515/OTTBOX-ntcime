@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="alternative_2">ABC</string>
-    <string name="alternative_3">DEF</string>
-    <string name="alternative_4">GHI</string>
-    <string name="alternative_5">JKL</string>
-    <string name="alternative_6">MNO</string>
-    <string name="alternative_7">PQRS</string>
-    <string name="alternative_8">TUV</string>
-    <string name="alternative_9">WXYZ</string>
+    <string name="alternative_2">abc</string>
+    <string name="alternative_3">def</string>
+    <string name="alternative_4">ghi</string>
+    <string name="alternative_5">jkl</string>
+    <string name="alternative_6">mno</string>
+    <string name="alternative_7">pqrs</string>
+    <string name="alternative_8">tuv</string>
+    <string name="alternative_9">wxyz</string>
 </resources>

@@ -43,19 +43,19 @@
     </Row>
 
     <Row>
-        <Key android:codes="714,711,715,729" android:keyLabel="*" android:popupCharacters="@string/alternative_zhuyin_star" android:keyEdgeFlags="left"/>
+        <Key android:codes="714,711,715,729" android:keyLabel="Help" android:popupCharacters="@string/alternative_zhuyin_star" android:keyEdgeFlags="left"/>
         <Key android:codes="12583,12584,12585" android:keyLabel="0" android:popupCharacters="@string/alternative_zhuyin_0" />
-        <Key android:codes="35" android:keyLabel="#" android:keyEdgeFlags="right"/>
+        <Key android:codes="-5" android:keyIcon="@drawable/delete_icon"
+            android:iconPreview="@drawable/delete_popup_icon"
+            android:isRepeatable="true" android:keyEdgeFlags="right"/>
     </Row>
 
     <Row  android:rowEdgeFlags="bottom" android:keyHeight="@dimen/key_height_bottom_row" >
         <Key android:codes="-200" android:keyLabel="@string/label_english_number"/>
-        <Key android:codes="-5" android:keyIcon="@drawable/delete_icon"
-            android:iconPreview="@drawable/delete_popup_icon"
-            android:isRepeatable="true"/>
         <Key android:codes="10" android:keyIcon="@drawable/enter_icon"
             android:iconPreview="@drawable/enter_popup_icon"
-            android:keyEdgeFlags="right"/>
+            android:isRepeatable="true"/>
+        <Key android:codes="4" android:keyLabel="back" android:keyEdgeFlags="right"/>
     </Row>
 
 </Keyboard>

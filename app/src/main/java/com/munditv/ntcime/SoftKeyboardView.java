@@ -31,6 +31,7 @@ import android.util.Log;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Shows a soft keyboard, rendering keys and detecting key presses.
@@ -40,10 +41,11 @@ public class SoftKeyboardView extends KeyboardView {
   private static final int FULL_WIDTH_OFFSET = 0xFEE0;
 
   private SoftKeyboard currentKeyboard;
-  private boolean capsLock;
+  private boolean capsLock, iscapsLock;
   private static Method invalidateKeyMethod;
   private List <Keyboard.Key> keys;
   private int mykeycode,mykey;
+
   static {
     try {
       invalidateKeyMethod = KeyboardView.class.getMethod(
@@ -91,10 +93,6 @@ public class SoftKeyboardView extends KeyboardView {
   public boolean isNumberZhuyin() { return currentKeyboard.isNumberZhuyin(); }
 
   public boolean isNumberEnglish() { return currentKeyboard.isNumberEnglish(); }
-
-  public boolean isZhuyin() { return currentKeyboard.isZhuyin(); }
-
-  public boolean isEnglish() { return currentKeyboard.isEnglish(); }
 
   public void setEscape(boolean escape) {
     if ((currentKeyboard != null) && currentKeyboard.setEscape(escape)) {
@@ -169,6 +167,12 @@ public class SoftKeyboardView extends KeyboardView {
       int h = key.height;
       if(key.popupCharacters != null) {
         String str = key.popupCharacters.toString();
+        if(iscapsLock) {
+            str = str.toUpperCase();
+        } else {
+            str = str.toLowerCase();
+        }
+
         if (str != null && str.length() > 0) {
             canvas.drawText(str, key.x + (key.width / 2), key.y + key.height-6, paint);
         }
@@ -244,4 +248,13 @@ public class SoftKeyboardView extends KeyboardView {
     return keycode;
   }
 
+  public void setCapsLock(boolean capslock) {
+    iscapsLock = capslock;
+    redrawKeyboard();
+  }
+
+  private void redrawKeyboard() {
+    if (isNumberZhuyin()) return;
+    invalidate();
+  }
 }

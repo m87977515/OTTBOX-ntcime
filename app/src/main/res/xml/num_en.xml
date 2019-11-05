@@ -26,36 +26,36 @@
 
     <Row>
         <Key android:codes="49" android:keyLabel="1" android:keyEdgeFlags="left" />
-        <Key android:codes="50,65,66,67" android:keyLabel="2" android:popupCharacters="@string/alternative_2" />
-        <Key android:codes="51,68,69,70" android:keyLabel="3" android:popupCharacters="@string/alternative_3" android:keyEdgeFlags="right" />
+        <Key android:codes="50,97,98,99" android:keyLabel="2" android:popupCharacters="@string/alternative_2" />
+        <Key android:codes="51,100,101,102" android:keyLabel="3" android:popupCharacters="@string/alternative_3" android:keyEdgeFlags="right" />
     </Row>
 
     <Row>
-        <Key android:codes="52,71,72,73" android:keyLabel="4" android:popupCharacters="@string/alternative_4" android:keyEdgeFlags="left" />
-        <Key android:codes="53,74,75,76" android:keyLabel="5" android:popupCharacters="@string/alternative_5" />
-        <Key android:codes="54,77,78,79" android:keyLabel="6" android:popupCharacters="@string/alternative_6" android:keyEdgeFlags="right"/>
+        <Key android:codes="52,103,104,105" android:keyLabel="4" android:popupCharacters="@string/alternative_4" android:keyEdgeFlags="left" />
+        <Key android:codes="53,106,107,108" android:keyLabel="5" android:popupCharacters="@string/alternative_5" />
+        <Key android:codes="54,109,110,111" android:keyLabel="6" android:popupCharacters="@string/alternative_6" android:keyEdgeFlags="right"/>
     </Row>
 
     <Row>
-        <Key android:codes="55,80,81,82,83" android:keyLabel="7" android:popupCharacters="@string/alternative_7" android:keyEdgeFlags="left" />
-        <Key android:codes="56,84,85,86" android:keyLabel="8" android:popupCharacters="@string/alternative_8" />
-        <Key android:codes="57,87,88,89,90" android:keyLabel="9" android:popupCharacters="@string/alternative_9" android:keyEdgeFlags="right" />
+        <Key android:codes="55,112,113,114,115" android:keyLabel="7" android:popupCharacters="@string/alternative_7" android:keyEdgeFlags="left" />
+        <Key android:codes="56,116,117,118" android:keyLabel="8" android:popupCharacters="@string/alternative_8" />
+        <Key android:codes="57,119,120,121,122" android:keyLabel="9" android:popupCharacters="@string/alternative_9" android:keyEdgeFlags="right" />
     </Row>
 
     <Row>
-        <Key android:codes="42" android:keyLabel="*" android:keyEdgeFlags="left"/>
+        <Key android:codes="172" android:keyLabel="Help" android:keyEdgeFlags="left"/>
         <Key android:codes="48" android:keyLabel="0" />
-        <Key android:codes="35" android:keyLabel="#" android:keyEdgeFlags="right"/>
+        <Key android:codes="-5" android:keyIcon="@drawable/delete_icon"
+            android:iconPreview="@drawable/delete_popup_icon"
+            android:isRepeatable="true" android:keyEdgeFlags="right"/>
     </Row>
 
     <Row  android:rowEdgeFlags="bottom" android:keyHeight="@dimen/key_height_bottom_row" >
         <Key android:codes="-200" android:keyLabel="@string/label_zhuyin"/>
-        <Key android:codes="-5" android:keyIcon="@drawable/delete_icon"
-            android:iconPreview="@drawable/delete_popup_icon"
-            android:isRepeatable="true"/>
         <Key android:codes="10" android:keyIcon="@drawable/enter_icon"
             android:iconPreview="@drawable/enter_popup_icon"
-            android:keyEdgeFlags="right"/>
+            android:isRepeatable="true"/>
+        <Key android:codes="4" android:keyLabel="back" android:keyEdgeFlags="right"/>
     </Row>
 
 </Keyboard>

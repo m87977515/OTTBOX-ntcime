@@ -19,6 +19,7 @@ package com.munditv.ntcime;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.database.CursorJoiner;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
@@ -43,7 +44,8 @@ public abstract class AbstractIME extends InputMethodService implements
   private SoundMotionEffect effect;
   private int orientation;
   private int hardwarekey;
-  private int inputkeycode;
+  private int prevKeyCode;
+  private boolean isCapslock;
 
   protected abstract KeyboardSwitch createKeyboardSwitch(Context context);
   protected abstract Editor createEditor();
@@ -57,7 +59,8 @@ public abstract class AbstractIME extends InputMethodService implements
     wordDictionary = createWordDictionary(this);
     phraseDictionary = new PhraseDictionary(this);
     effect = new SoundMotionEffect(this);
-
+    prevKeyCode = -2;
+    isCapslock = false;
     orientation = getResources().getConfiguration().orientation;
     // Use the following line to debug IME service.
     //android.os.Debug.waitForDebugger();
@@ -182,6 +185,10 @@ public abstract class AbstractIME extends InputMethodService implements
   @Override
   public boolean onKeyDown(int keyCode, KeyEvent event) {
     Log.d("AbstractIME ", "onKeyDown() keyCode = " + Integer.toString(keyCode));
+
+    if(inputView == null) return super.onKeyDown(keyCode, event);
+    if(!inputView.isShown()) return super.onKeyDown(keyCode, event);
+
     if ((keyCode == KeyEvent.KEYCODE_BACK) && (event.getRepeatCount() == 0)) {
       // Handle the back-key to close the pop-up keyboards.
       if ((inputView != null) && inputView.handleBack()) {
@@ -196,7 +203,13 @@ public abstract class AbstractIME extends InputMethodService implements
     }
 
     if(keyCode == 172 || keyCode == 68) {
-      keyCode = 256;
+      if(inputView.isNumberEnglish()) {
+        isCapslock = !isCapslock;
+        inputView.setCapsLock(isCapslock);
+        return true;
+      } else {
+        keyCode = 256;
+      }
     }
 
     if (keyCode == 67) {
@@ -247,10 +260,31 @@ public abstract class AbstractIME extends InputMethodService implements
       return true;
     }
 
+    if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT ||
+            keyCode == KeyEvent.KEYCODE_DPAD_RIGHT ||
+            keyCode == KeyEvent.KEYCODE_DPAD_UP ||
+            keyCode == KeyEvent.KEYCODE_DPAD_DOWN ||
+            keyCode == KeyEvent.KEYCODE_BACK ||
+            keyCode == KeyEvent.KEYCODE_ESCAPE) {
+      return super.onKeyDown(keyCode, event);
+    }
+
     if(inputView != null) {
       hardwarekey = inputView.getCharactersByKeycode(keyCode);
+      if(inputView.isNumberEnglish()) {
+/*
+        if(prevKeyCode == keyCode) {
+          handleKeyCode(-5);
+        }
+*/
+        if(isCapslock) {
+          hardwarekey = Character.toUpperCase(hardwarekey);
+        }
+        prevKeyCode = keyCode;
+      }
       handleKeyCode(hardwarekey);
-      if (hardwarekey > 255) return true;
+      //if (hardwarekey > 255)
+      return true;
     }
 
     return super.onKeyDown(keyCode, event);
@@ -280,7 +314,6 @@ public abstract class AbstractIME extends InputMethodService implements
       return;
     }
     handleKey(primaryCode);
-
   }
 
   public void onText(CharSequence text) {
