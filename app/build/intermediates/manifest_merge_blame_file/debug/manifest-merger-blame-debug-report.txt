@@ -30,50 +30,56 @@
 28    <uses-permission android:name="android.permission.VIBRATE" />
 28-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:25:5-65
 28-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:25:22-63
-29
-30    <application
-30-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:26:5-41:19
-31        android:debuggable="true"
-32        android:icon="@drawable/icon"
-32-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:26:51-80
-33        android:label="@string/ime_name" >
-33-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:26:18-50
-34        <service
-34-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:28:9-34:19
-35            android:name="com.munditv.ntcime.ZhuyinIME"
-35-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:28:18-42
-36            android:label="@string/zhuyin_ime_name"
-36-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:28:43-82
-37            android:permission="android.permission.BIND_INPUT_METHOD" >
-37-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:29:17-74
-38            <intent-filter>
-38-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:30:13-32:29
-39                <action android:name="android.view.InputMethod" />
-39-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:31:17-67
-39-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:31:25-64
-40            </intent-filter>
-41
-42            <meta-data
-42-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:33:13-88
-43                android:name="android.view.im"
-43-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:33:24-54
-44                android:resource="@xml/method" />
-44-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:33:55-85
-45        </service>
-46
-47        <activity
-47-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:36:9-40:20
-48            android:name="com.munditv.ntcime.ImePreferenceActivity"
-48-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:36:19-55
-49            android:label="@string/ime_name" >
-49-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:36:56-88
-50            <intent-filter>
-50-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:37:13-39:29
-51                <action android:name="android.intent.action.MAIN" />
-51-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:38:17-68
-51-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:38:25-66
-52            </intent-filter>
-53        </activity>
-54    </application>
-55
-56</manifest>
+29    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+29-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:26:5-73
+29-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:26:22-71
+30    <uses-permission android:name="android.permission.BLUETOOTH" />
+30-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:27:5-67
+30-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:27:22-65
+31
+32    <application
+32-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:29:5-44:19
+33        android:debuggable="true"
+34        android:icon="@drawable/icon"
+34-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:29:51-80
+35        android:label="@string/ime_name" >
+35-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:29:18-50
+36        <service
+36-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:31:9-37:19
+37            android:name="com.munditv.ntcime.ZhuyinIME"
+37-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:31:18-42
+38            android:label="@string/zhuyin_ime_name"
+38-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:31:43-82
+39            android:permission="android.permission.BIND_INPUT_METHOD" >
+39-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:32:17-74
+40            <intent-filter>
+40-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:33:13-35:29
+41                <action android:name="android.view.InputMethod" />
+41-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:34:17-67
+41-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:34:25-64
+42            </intent-filter>
+43
+44            <meta-data
+44-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:36:13-88
+45                android:name="android.view.im"
+45-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:36:24-54
+46                android:resource="@xml/method" />
+46-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:36:55-85
+47        </service>
+48
+49        <activity
+49-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:39:9-43:20
+50            android:name="com.munditv.ntcime.ImePreferenceActivity"
+50-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:39:19-55
+51            android:label="@string/ime_name" >
+51-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:39:56-88
+52            <intent-filter>
+52-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:40:13-42:29
+53                <action android:name="android.intent.action.MAIN" />
+53-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:41:17-68
+53-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:41:25-66
+54            </intent-filter>
+55        </activity>
+56    </application>
+57
+58</manifest>

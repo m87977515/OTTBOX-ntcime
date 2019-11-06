@@ -118,7 +118,10 @@ public final class R {
     public static final int prefs_sound_key=0x7f08001c;
     public static final int prefs_sound_title=0x7f08001d;
     public static final int prefs_vibrate_key=0x7f08001e;
-    public static final int zhuyin_ime_name=0x7f08001f;
+    public static final int title_connected_to=0x7f08001f;
+    public static final int title_connecting=0x7f080020;
+    public static final int title_not_connected=0x7f080021;
+    public static final int zhuyin_ime_name=0x7f080022;
   }
   public static final class style {
     public static final int KeyboardKeyOverlay=0x7f090000;

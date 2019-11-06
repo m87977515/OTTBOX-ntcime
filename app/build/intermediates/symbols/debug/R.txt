@@ -93,7 +93,10 @@ int string prefs_licensing 0x7f08001b
 int string prefs_sound_key 0x7f08001c
 int string prefs_sound_title 0x7f08001d
 int string prefs_vibrate_key 0x7f08001e
-int string zhuyin_ime_name 0x7f08001f
+int string title_connected_to 0x7f08001f
+int string title_connecting 0x7f080020
+int string title_not_connected 0x7f080021
+int string zhuyin_ime_name 0x7f080022
 int style KeyboardKeyOverlay 0x7f090000
 int xml method 0x7f0a0000
 int xml num_en 0x7f0a0001

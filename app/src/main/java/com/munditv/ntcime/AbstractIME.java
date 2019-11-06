@@ -24,11 +24,16 @@ import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
+import android.widget.Toast;
+
+import com.munditv.ntcime.btrfcomm.BTRFComm;
+import com.munditv.ntcime.btrfcomm.Constants;
 
 /**
  * Abstract class extended by ZhuyinIME
@@ -47,6 +52,9 @@ public abstract class AbstractIME extends InputMethodService implements
   private int hardwarekey;
   private int prevKeyCode;
   private boolean isCapslock;
+  private boolean isRFComm = false;
+  private BTRFComm mBTRFComm = null;
+  private Context mContext;
 
   private Handler mHandler = new Handler();
 
@@ -63,6 +71,7 @@ public abstract class AbstractIME extends InputMethodService implements
     phraseDictionary = new PhraseDictionary(this);
     effect = new SoundMotionEffect(this);
     prevKeyCode = -2;
+    mContext = this;
     isCapslock = false;
     orientation = getResources().getConfiguration().orientation;
     // Use the following line to debug IME service.
@@ -188,6 +197,19 @@ public abstract class AbstractIME extends InputMethodService implements
   @Override
   public boolean onKeyDown(int keyCode, KeyEvent event) {
     Log.d("AbstractIME ", "onKeyDown() keyCode = " + Integer.toString(keyCode));
+    if (keyCode == 75) {
+        if(!isRFComm) {
+          if(mBTRFComm == null) {
+            mBTRFComm = new BTRFComm();
+            mBTRFComm.initialize(this, mBTHandler);
+            Toast.makeText(this, "藍芽手機輸入", Toast.LENGTH_LONG);
+          } else {
+            mBTRFComm.Destroy();
+            mBTRFComm = null;
+            Toast.makeText(this, "關閉藍芽輸入", Toast.LENGTH_LONG);
+          }
+        }
+    }
 
     if(inputView == null) return super.onKeyDown(keyCode, event);
     if(!inputView.isShown()) return super.onKeyDown(keyCode, event);
@@ -199,7 +221,7 @@ public abstract class AbstractIME extends InputMethodService implements
       }
     }
 
-    if (keyCode == 75 || keyCode ==165) {
+    if (keyCode ==165) {
       return super.onKeyDown(keyCode, event);
     }
 
@@ -490,4 +512,26 @@ public abstract class AbstractIME extends InputMethodService implements
   public void swipeUp() {
 
   }
+
+  private Handler mBTHandler = new Handler() {
+    @Override
+    public void handleMessage(Message msg) {
+      switch (msg.what) {
+        case Constants.MESSAGE_STATE_CHANGE:
+          CharSequence str = mBTRFComm.getStatusString();
+          Toast.makeText(mContext, str, Toast.LENGTH_LONG);
+          break;
+        case Constants.MESSAGE_WRITE:
+          break;
+        case Constants.MESSAGE_READ:
+          CharSequence str1 = mBTRFComm.getMessage();
+          commitText(str1);
+          break;
+        case Constants.MESSAGE_DEVICE_NAME:
+          break;
+        case Constants.MESSAGE_TOAST:
+          break;
+      }
+    }
+  };
 }

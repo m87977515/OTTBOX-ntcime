@@ -23,6 +23,9 @@
         android:versionName="1.0"
         >
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+
     <application android:label="@string/ime_name" android:icon="@drawable/icon">
 
         <service android:name="ZhuyinIME" android:label="@string/zhuyin_ime_name"

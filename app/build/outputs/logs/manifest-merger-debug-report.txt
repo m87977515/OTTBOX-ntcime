@@ -1,12 +1,12 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:20:1-42:12
-INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:20:1-42:12
-INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:20:1-42:12
-INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:20:1-42:12
-INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:20:1-42:12
-INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:20:1-42:12
-INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:20:1-42:12
+ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:20:1-45:12
+INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:20:1-45:12
+INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:20:1-45:12
+INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:20:1-45:12
+INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:20:1-45:12
+INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:20:1-45:12
+INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:20:1-45:12
 	package
 		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:21:9-37
 		INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml
@@ -25,44 +25,52 @@ uses-permission#android.permission.VIBRATE
 ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:25:5-65
 	android:name
 		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:25:22-63
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:26:5-73
+	android:name
+		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:26:22-71
+uses-permission#android.permission.BLUETOOTH
+ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:27:5-67
+	android:name
+		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:27:22-65
 application
-ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:26:5-41:19
+ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:29:5-44:19
 	android:label
-		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:26:18-50
+		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:29:18-50
 	android:icon
-		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:26:51-80
+		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:29:51-80
 service#com.munditv.ntcime.ZhuyinIME
-ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:28:9-34:19
+ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:31:9-37:19
 	android:label
-		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:28:43-82
+		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:31:43-82
 	android:permission
-		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:29:17-74
+		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:32:17-74
 	android:name
-		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:28:18-42
+		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:31:18-42
 intent-filter#action:name:android.view.InputMethod
-ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:30:13-32:29
+ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:33:13-35:29
 action#android.view.InputMethod
-ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:31:17-67
+ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:34:17-67
 	android:name
-		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:31:25-64
+		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:34:25-64
 meta-data#android.view.im
-ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:33:13-88
+ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:36:13-88
 	android:resource
-		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:33:55-85
+		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:36:55-85
 	android:name
-		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:33:24-54
+		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:36:24-54
 activity#com.munditv.ntcime.ImePreferenceActivity
-ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:36:9-40:20
+ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:39:9-43:20
 	android:label
-		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:36:56-88
+		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:39:56-88
 	android:name
-		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:36:19-55
+		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:39:19-55
 intent-filter#action:name:android.intent.action.MAIN
-ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:37:13-39:29
+ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:40:13-42:29
 action#android.intent.action.MAIN
-ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:38:17-68
+ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:41:17-68
 	android:name
-		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:38:25-66
+		ADDED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:41:25-66
 uses-sdk
 INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml

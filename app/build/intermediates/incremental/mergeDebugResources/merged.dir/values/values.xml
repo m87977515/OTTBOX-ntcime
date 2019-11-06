@@ -59,6 +59,9 @@
     <string name="prefs_sound_key">prefs_sound</string>
     <string name="prefs_sound_title">按鍵音效</string>
     <string name="prefs_vibrate_key">prefs_vibrate</string>
+    <string name="title_connected_to">藍芽連結到</string>
+    <string name="title_connecting">藍芽連結中</string>
+    <string name="title_not_connected">藍芽未連結</string>
     <string name="zhuyin_ime_name">老人機輸入法</string>
     <style name="KeyboardKeyOverlay">
         <item name="android:background">@android:color/transparent</item>
