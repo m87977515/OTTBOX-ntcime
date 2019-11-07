@@ -91,7 +91,17 @@ public abstract class AbstractIME extends InputMethodService implements
       orientation = newConfig.orientation;
     }
     super.onConfigurationChanged(newConfig);
+    mHandler.postDelayed(initBT,1000);
   }
+
+  final Runnable initBT = new Runnable() {
+    @Override
+    public void run() {
+      boolean flag = initializeBTComm();
+      if(flag) Toast.makeText(mContext, "藍芽手機輸入", Toast.LENGTH_LONG).show();
+      else Toast.makeText(mContext, "無法使用藍芽輸入", Toast.LENGTH_LONG).show();
+    }
+  };
 
   @Override
   public void onUpdateSelection(int oldSelStart, int oldSelEnd, int newSelStart,
@@ -203,9 +213,10 @@ public abstract class AbstractIME extends InputMethodService implements
   public boolean onKeyDown(int keyCode, KeyEvent event) {
     Log.d("AbstractIME ", "onKeyDown() keyCode = " + Integer.toString(keyCode));
     if (keyCode == 165) {
+
         if(!isRFComm) {
             boolean flag = initializeBTComm();
-            Toast.makeText(this, "藍芽手機輸入", Toast.LENGTH_LONG);
+            Toast.makeText(this, "藍芽手機輸入", Toast.LENGTH_LONG).show();
             if (candidatesContainer != null) {
               candidatesContainer.setCandidates(" ",false);
               if(flag)
@@ -215,12 +226,13 @@ public abstract class AbstractIME extends InputMethodService implements
             }
         } else {
             closeBTComm();
-            Toast.makeText(this, "關閉藍芽輸入", Toast.LENGTH_LONG);
+            Toast.makeText(this, "關閉藍芽輸入", Toast.LENGTH_LONG).show();
             if (candidatesContainer != null) {
               candidatesContainer.setCandidates(" ",false);
               candidatesContainer.displayBlueRFComm("關閉藍芽輸入");
             }
         }
+
         return true;
     }
 
@@ -527,13 +539,15 @@ public abstract class AbstractIME extends InputMethodService implements
   }
 
   private boolean initializeBTComm() {
+
     mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     if (mBluetoothAdapter == null) {
       return false;
     }
     if (!mBluetoothAdapter.isEnabled()) {
-      mBluetoothAdapter.enable();
+      //mBluetoothAdapter.enable();
       // Otherwise, setup the chat session
+      Toast.makeText(this, "藍芽未開啟", Toast.LENGTH_LONG).show();
     }
 
     if (mChatService == null) {
@@ -573,6 +587,7 @@ public abstract class AbstractIME extends InputMethodService implements
               isConnected = false;
               break;
           }
+          candidatesContainer.displayBlueRFComm(mStatusString);
           break;
         case Constants.MESSAGE_WRITE:
           byte[] writeBuf = (byte[]) msg.obj;
@@ -585,6 +600,8 @@ public abstract class AbstractIME extends InputMethodService implements
           // construct a string from the valid bytes in the buffer
           readMessage = new String(readBuf, 0, msg.arg1);
           //mConversationArrayAdapter.add(mConnectedDeviceName + ":  " + readMessage);
+          clearCandidates();
+          commitText(readMessage);
           break;
         case Constants.MESSAGE_DEVICE_NAME:
           // save the connected device's name
