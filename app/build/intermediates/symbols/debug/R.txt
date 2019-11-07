@@ -31,10 +31,11 @@ int drawable space_icon 0x7f030016
 int drawable space_popup_icon 0x7f030017
 int id arrow_left 0x7f040000
 int id arrow_right 0x7f040001
-int id candidate_view 0x7f040002
-int id candidates_container 0x7f040003
-int id keyboard 0x7f040004
-int id license_view 0x7f040005
+int id bluerfcomm_text 0x7f040002
+int id candidate_view 0x7f040003
+int id candidates_container 0x7f040004
+int id keyboard 0x7f040005
+int id license_view 0x7f040006
 int integer rckey_0 0x7f050000
 int integer rckey_1 0x7f050001
 int integer rckey_2 0x7f050002

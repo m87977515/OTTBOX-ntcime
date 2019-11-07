@@ -21,6 +21,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * Contains all candidates in pages where users could move forward (next page)
@@ -34,6 +35,7 @@ public class CandidatesContainer extends LinearLayout {
   private CandidateView candidateView;
   private ImageButton leftArrow;
   private ImageButton rightArrow;
+  private TextView mTextView;
   private String words;
   private boolean highlightDefault;
   private int currentPage;
@@ -63,6 +65,11 @@ public class CandidatesContainer extends LinearLayout {
         showPage(currentPage + 1);
       }
     });
+    mTextView = (TextView) findViewById(R.id.bluerfcomm_text);
+  }
+
+  public void displayBlueRFComm(String str) {
+    mTextView.setText(str);
   }
 
   public void setCandidateViewListener(

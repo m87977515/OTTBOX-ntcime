@@ -48,10 +48,11 @@ public final class R {
   public static final class id {
     public static final int arrow_left=0x7f040000;
     public static final int arrow_right=0x7f040001;
-    public static final int candidate_view=0x7f040002;
-    public static final int candidates_container=0x7f040003;
-    public static final int keyboard=0x7f040004;
-    public static final int license_view=0x7f040005;
+    public static final int bluerfcomm_text=0x7f040002;
+    public static final int candidate_view=0x7f040003;
+    public static final int candidates_container=0x7f040004;
+    public static final int keyboard=0x7f040005;
+    public static final int license_view=0x7f040006;
   }
   public static final class integer {
     public static final int rckey_0=0x7f050000;
