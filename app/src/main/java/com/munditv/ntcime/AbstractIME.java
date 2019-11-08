@@ -19,6 +19,7 @@ package com.munditv.ntcime;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.inputmethodservice.ExtractEditText;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
@@ -27,12 +28,16 @@ import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.Toast;
 
 import com.munditv.ntcime.btrfcomm.BluetoothChatService;
+import com.munditv.ntcime.btrfcomm.BluetoothStatusManager;
 import com.munditv.ntcime.btrfcomm.Constants;
+
+import org.w3c.dom.Text;
 
 /**
  * Abstract class extended by ZhuyinIME
@@ -51,13 +56,15 @@ public abstract class AbstractIME extends InputMethodService implements
   private int hardwarekey;
   private int prevKeyCode;
   private boolean isCapslock;
-  private boolean isRFComm = false;
+  private boolean isBTStatusShow = false;
   private Context mContext;
+  private BluetoothStatusManager mBTStatusWindow = null;
+  private ExtractEditText mExtract;
 
   private BluetoothAdapter mBluetoothAdapter = null;
   private String mConnectedDeviceName = null;
   private BluetoothChatService mChatService = null;
-  private boolean isConnected = false;
+  private boolean isBTRFComm = false;
   private String readMessage;
   private String mStatusString;
 
@@ -80,7 +87,18 @@ public abstract class AbstractIME extends InputMethodService implements
     isCapslock = false;
     orientation = getResources().getConfiguration().orientation;
     // Use the following line to debug IME service.
-    //android.os.Debug.waitForDebugger();
+    //android.os.Debug.waitForDebugger()
+    isBTRFComm = initializeBTComm();
+    initiatePopupWindow();
+    mHandler.postDelayed(initBT,1000);;
+  }
+
+  @Override
+  public void onDestroy() {
+    closeBTComm();
+    mBTStatusWindow.Destroy();
+
+    super.onDestroy();
   }
 
   @Override
@@ -90,16 +108,34 @@ public abstract class AbstractIME extends InputMethodService implements
       escape();
       orientation = newConfig.orientation;
     }
+
     super.onConfigurationChanged(newConfig);
-    mHandler.postDelayed(initBT,1000);
+  }
+
+  public void initiatePopupWindow()
+  {
+    mBTStatusWindow = new BluetoothStatusManager(this);
+    isBTStatusShow = true;
   }
 
   final Runnable initBT = new Runnable() {
     @Override
     public void run() {
-      boolean flag = initializeBTComm();
-      if(flag) Toast.makeText(mContext, "藍芽手機輸入", Toast.LENGTH_LONG).show();
-      else Toast.makeText(mContext, "無法使用藍芽輸入", Toast.LENGTH_LONG).show();
+
+      if(isBTRFComm) {
+        mChatService.start();
+        Toast.makeText(mContext, "藍芽手機輸入", Toast.LENGTH_LONG).show();
+        if(mBTStatusWindow == null) {
+          initiatePopupWindow();
+        }
+        mBTStatusWindow.setTextMessage("藍芽手機輸入");
+      } else {
+        Toast.makeText(mContext, "無法使用藍芽輸入", Toast.LENGTH_LONG).show();
+        if(mBTStatusWindow == null) {
+          initiatePopupWindow();
+        }
+        mBTStatusWindow.setTextMessage("無法使用藍芽輸入");
+      }
     }
   };
 
@@ -124,10 +160,25 @@ public abstract class AbstractIME extends InputMethodService implements
   }
 
   @Override
+  public void onConfigureWindow(Window win, boolean isFullscreen, boolean isCandidatesOnly) {
+    super.onConfigureWindow(win, false, isCandidatesOnly);
+  }
+
+  @Override
+  public void onStartInput(EditorInfo attribute, boolean restarting) {
+    attribute.imeOptions = EditorInfo.IME_FLAG_NO_FULLSCREEN;
+    super.onStartInput(attribute, restarting);
+  }
+
+  @Override
   public View onCreateInputView() {
     inputView = (SoftKeyboardView) getLayoutInflater().inflate(
         R.layout.input, null);
     inputView.setOnKeyboardActionListener(this);
+    InputConnection ic = getCurrentInputConnection();
+    if (ic != null) {
+      EditorInfo ei = getCurrentInputEditorInfo();
+    }
     return inputView;
   }
 
@@ -198,6 +249,7 @@ public abstract class AbstractIME extends InputMethodService implements
       if ((ei != null) && (ei.inputType != EditorInfo.TYPE_NULL)) {
         caps = ic.getCursorCapsMode(ei.inputType);
       }
+
       inputView.updateCursorCaps(caps);
     }
   }
@@ -212,27 +264,20 @@ public abstract class AbstractIME extends InputMethodService implements
   @Override
   public boolean onKeyDown(int keyCode, KeyEvent event) {
     Log.d("AbstractIME ", "onKeyDown() keyCode = " + Integer.toString(keyCode));
-    if (keyCode == 165) {
-
-        if(!isRFComm) {
-            boolean flag = initializeBTComm();
-            Toast.makeText(this, "藍芽手機輸入", Toast.LENGTH_LONG).show();
-            if (candidatesContainer != null) {
-              candidatesContainer.setCandidates(" ",false);
-              if(flag)
-                candidatesContainer.displayBlueRFComm("藍芽手機輸入");
-              else
-                candidatesContainer.displayBlueRFComm("無法開啟藍芽");
-            }
+    if (keyCode == 165 || keyCode == 73) {
+        if(!isBTStatusShow) {
+          isBTStatusShow = true;
+          if(mBTStatusWindow == null) {
+            initiatePopupWindow();
+          }
+          mBTStatusWindow.showStatus();
         } else {
-            closeBTComm();
-            Toast.makeText(this, "關閉藍芽輸入", Toast.LENGTH_LONG).show();
-            if (candidatesContainer != null) {
-              candidatesContainer.setCandidates(" ",false);
-              candidatesContainer.displayBlueRFComm("關閉藍芽輸入");
-            }
+          isBTStatusShow = false;
+          if(mBTStatusWindow == null) {
+            initiatePopupWindow();
+          }
+          mBTStatusWindow.hideStatus();
         }
-
         return true;
     }
 
@@ -539,7 +584,6 @@ public abstract class AbstractIME extends InputMethodService implements
   }
 
   private boolean initializeBTComm() {
-
     mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     if (mBluetoothAdapter == null) {
       return false;
@@ -548,12 +592,15 @@ public abstract class AbstractIME extends InputMethodService implements
       //mBluetoothAdapter.enable();
       // Otherwise, setup the chat session
       Toast.makeText(this, "藍芽未開啟", Toast.LENGTH_LONG).show();
+      isBTStatusShow = true;
+      if(mBTStatusWindow == null) {
+        initiatePopupWindow();
+      }
+      mBTStatusWindow.setTextMessage("藍芽未開啟");
     }
-
     if (mChatService == null) {
       mChatService = new BluetoothChatService(mContext, mBTHandler);
     }
-    mChatService.start();
     return true;
   }
 
@@ -566,7 +613,14 @@ public abstract class AbstractIME extends InputMethodService implements
 
   private void setStatus(CharSequence subTitle) {
     mStatusString = subTitle.toString();
+    isBTStatusShow = true;
+    Toast.makeText(this,mStatusString,Toast.LENGTH_SHORT);
+    if(mBTStatusWindow == null) {
+      initiatePopupWindow();
+    }
+    mBTStatusWindow.setTextMessage(mStatusString);
   }
+
   private final Handler mBTHandler = new Handler() {
     @Override
     public void handleMessage(Message msg) {
@@ -575,8 +629,6 @@ public abstract class AbstractIME extends InputMethodService implements
           switch (msg.arg1) {
             case BluetoothChatService.STATE_CONNECTED:
               setStatus(mContext.getString(R.string.title_connected_to) + mConnectedDeviceName);
-              //mConversationArrayAdapter.clear();
-              isConnected = true;
               break;
             case BluetoothChatService.STATE_CONNECTING:
               setStatus(mContext.getString(R.string.title_connecting));
@@ -584,7 +636,6 @@ public abstract class AbstractIME extends InputMethodService implements
             case BluetoothChatService.STATE_LISTEN:
             case BluetoothChatService.STATE_NONE:
               setStatus(mContext.getString(R.string.title_not_connected));
-              isConnected = false;
               break;
           }
           candidatesContainer.displayBlueRFComm(mStatusString);

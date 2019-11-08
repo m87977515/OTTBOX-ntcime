@@ -140,6 +140,10 @@
         "source": "/home/chevylin/Workspace/ntcime/app/src/main/res/layout/keylayout.xml"
     },
     {
+        "merged": "/home/chevylin/Workspace/ntcime/app/build/intermediates/res/merged/debug/layout_btwindow.xml.flat",
+        "source": "/home/chevylin/Workspace/ntcime/app/src/main/res/layout/btwindow.xml"
+    },
+    {
         "merged": "/home/chevylin/Workspace/ntcime/app/build/intermediates/res/merged/debug/xml_symbols_shift.xml.flat",
         "source": "/home/chevylin/Workspace/ntcime/app/src/main/res/xml/symbols_shift.xml"
     },

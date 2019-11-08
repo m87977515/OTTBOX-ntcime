@@ -128,7 +128,10 @@ public class BluetoothChatService {
             mInsecureAcceptThread.start();
         }
         // Update UI title
+/*
         updateUserInterfaceTitle();
+
+*/
     }
 
     public synchronized void disconnect() {

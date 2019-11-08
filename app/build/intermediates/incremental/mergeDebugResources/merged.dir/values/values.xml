@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="bluetooth_status_color">#1010F000</color>
     <color name="candidate_normal">#ff000000</color>
     <dimen name="candidate_font_height">28sp</dimen>
     <dimen name="candidates_view_height">42sp</dimen>

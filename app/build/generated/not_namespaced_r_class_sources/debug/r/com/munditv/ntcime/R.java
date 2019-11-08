@@ -9,7 +9,8 @@ package com.munditv.ntcime;
 
 public final class R {
   public static final class color {
-    public static final int candidate_normal=0x7f010000;
+    public static final int bluetooth_status_color=0x7f010000;
+    public static final int candidate_normal=0x7f010001;
   }
   public static final class dimen {
     public static final int candidate_font_height=0x7f020000;
@@ -49,10 +50,11 @@ public final class R {
     public static final int arrow_left=0x7f040000;
     public static final int arrow_right=0x7f040001;
     public static final int bluerfcomm_text=0x7f040002;
-    public static final int candidate_view=0x7f040003;
-    public static final int candidates_container=0x7f040004;
-    public static final int keyboard=0x7f040005;
-    public static final int license_view=0x7f040006;
+    public static final int bt_status=0x7f040003;
+    public static final int candidate_view=0x7f040004;
+    public static final int candidates_container=0x7f040005;
+    public static final int keyboard=0x7f040006;
+    public static final int license_view=0x7f040007;
   }
   public static final class integer {
     public static final int rckey_0=0x7f050000;
@@ -78,10 +80,11 @@ public final class R {
     public static final int rckey_up=0x7f050014;
   }
   public static final class layout {
-    public static final int candidates=0x7f060000;
-    public static final int input=0x7f060001;
-    public static final int keylayout=0x7f060002;
-    public static final int licensing=0x7f060003;
+    public static final int btwindow=0x7f060000;
+    public static final int candidates=0x7f060001;
+    public static final int input=0x7f060002;
+    public static final int keylayout=0x7f060003;
+    public static final int licensing=0x7f060004;
   }
   public static final class raw {
     public static final int dict_phrases=0x7f070000;
