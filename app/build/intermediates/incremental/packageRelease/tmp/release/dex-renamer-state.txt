@@ -1,0 +1,4 @@
+#Sat Nov 09 16:55:33 CST 2019
+base.0=/work/Workspace/Android/ottapp/ntcime/app/build/intermediates/dex/release/mergeDexRelease/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
