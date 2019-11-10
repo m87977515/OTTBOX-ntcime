@@ -23,64 +23,64 @@
 23
 24    <uses-sdk
 25        android:minSdkVersion="19"
-25-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml
+25-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml
 26        android:targetSdkVersion="19" />
-26-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml
+26-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml
 27
 28    <uses-permission android:name="android.permission.VIBRATE" />
-28-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:25:5-65
-28-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:25:22-63
+28-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:25:5-65
+28-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:25:22-63
 29    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-29-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:26:5-73
-29-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:26:22-71
+29-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:26:5-73
+29-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:26:22-71
 30    <uses-permission android:name="android.permission.BLUETOOTH" />
-30-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:27:5-67
-30-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:27:22-65
+30-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:27:5-67
+30-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:27:22-65
 31    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-31-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:28:5-78
-31-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:28:22-75
+31-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:28:5-78
+31-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:28:22-75
 32
 33    <application
-33-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:30:5-45:19
+33-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:30:5-45:19
 34        android:debuggable="true"
 35        android:icon="@drawable/icon"
-35-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:30:51-80
+35-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:30:51-80
 36        android:label="@string/ime_name" >
-36-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:30:18-50
+36-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:30:18-50
 37        <service
-37-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:32:9-38:19
+37-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:32:9-38:19
 38            android:name="com.munditv.ntcime.ZhuyinIME"
-38-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:32:18-42
+38-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:32:18-42
 39            android:label="@string/zhuyin_ime_name"
-39-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:32:43-82
+39-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:32:43-82
 40            android:permission="android.permission.BIND_INPUT_METHOD" >
-40-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:33:17-74
+40-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:33:17-74
 41            <intent-filter>
-41-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:34:13-36:29
+41-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:34:13-36:29
 42                <action android:name="android.view.InputMethod" />
-42-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:35:17-67
-42-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:35:25-64
+42-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:35:17-67
+42-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:35:25-64
 43            </intent-filter>
 44
 45            <meta-data
-45-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:37:13-88
+45-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:37:13-88
 46                android:name="android.view.im"
-46-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:37:24-54
+46-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:37:24-54
 47                android:resource="@xml/method" />
-47-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:37:55-85
+47-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:37:55-85
 48        </service>
 49
 50        <activity
-50-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:40:9-44:20
+50-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:40:9-44:20
 51            android:name="com.munditv.ntcime.ImePreferenceActivity"
-51-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:40:19-55
+51-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:40:19-55
 52            android:label="@string/ime_name" >
-52-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:40:56-88
+52-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:40:56-88
 53            <intent-filter>
-53-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:41:13-43:29
+53-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:41:13-43:29
 54                <action android:name="android.intent.action.MAIN" />
-54-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:42:17-68
-54-->/home/chevylin/Workspace/ntcime/app/src/main/AndroidManifest.xml:42:25-66
+54-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:42:17-68
+54-->/work/Workspace/Android/ottapp/ntcime/app/src/main/AndroidManifest.xml:42:25-66
 55            </intent-filter>
 56        </activity>
 57    </application>

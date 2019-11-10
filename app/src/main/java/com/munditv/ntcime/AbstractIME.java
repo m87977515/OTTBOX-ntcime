@@ -33,6 +33,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.Toast;
 
+import com.munditv.ntcime.advistor.AdvistorWindow;
 import com.munditv.ntcime.btrfcomm.BluetoothChatService;
 import com.munditv.ntcime.btrfcomm.BluetoothStatusManager;
 import com.munditv.ntcime.btrfcomm.Constants;
@@ -59,7 +60,9 @@ public abstract class AbstractIME extends InputMethodService implements
   private boolean isBTStatusShow = false;
   private Context mContext;
   private BluetoothStatusManager mBTStatusWindow = null;
-  private ExtractEditText mExtract;
+  private AdvistorWindow mAdvistorWindow = null;
+  private boolean hasAdvistor = true;
+  private boolean isAdvistorShow = false;
 
   private BluetoothAdapter mBluetoothAdapter = null;
   private String mConnectedDeviceName = null;
@@ -116,6 +119,10 @@ public abstract class AbstractIME extends InputMethodService implements
   {
     mBTStatusWindow = new BluetoothStatusManager(this);
     isBTStatusShow = true;
+    if (hasAdvistor) {
+      mAdvistorWindow = new AdvistorWindow(this);
+      isAdvistorShow = true;
+    }
   }
 
   final Runnable initBT = new Runnable() {
@@ -278,6 +285,15 @@ public abstract class AbstractIME extends InputMethodService implements
           }
           mBTStatusWindow.hideStatus();
         }
+        if (hasAdvistor) {
+          if (isAdvistorShow) {
+            mAdvistorWindow.hideStatus();
+            isAdvistorShow = false;
+          } else {
+            mAdvistorWindow.showStatus();
+            isAdvistorShow = true;
+          }
+        }
         return true;
     }
 
@@ -292,7 +308,16 @@ public abstract class AbstractIME extends InputMethodService implements
     }
 
     if (keyCode ==75) {
-      return super.onKeyDown(keyCode, event);
+      if (hasAdvistor) {
+        if (isAdvistorShow) {
+          mAdvistorWindow.hideStatus();
+          isAdvistorShow = false;
+        } else {
+          mAdvistorWindow.showStatus();
+          isAdvistorShow = true;
+        }
+      }
+      return true;
     }
 
     if (keyCode == 82) {
